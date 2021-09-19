@@ -5,3 +5,6 @@
     border: 2px solid #FFFFFF;
     border-radius: 2px;
 }
+.profile__add:hover{
+    opacity: 0.6;
+}

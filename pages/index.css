@@ -18,3 +18,13 @@
 @import url(../blocks/elements-grid/__text/elements-grid__text.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__input-title/form__input-title.css);
+@import url(../blocks/form/__input-subtitle/form__input-subtitle.css);
+@import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/form/__container/form__container.css);
+@import url(../blocks/popup/__button/popup__button.css);

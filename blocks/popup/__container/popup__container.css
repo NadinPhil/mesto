@@ -1,5 +1,5 @@
 .popup__container{
-    position: relative; 
+    position: relative;
     max-width: 430px;
 }
 @media (max-width: 510px){

@@ -8,6 +8,9 @@
     background:none;
     background-image: url(../../../images/Close\ Icon.svg);
 }
+.popup__button:hover{
+    opacity: 0.6;
+}
 @media (max-width:510px){
     .popup__button{
         width: 20px;

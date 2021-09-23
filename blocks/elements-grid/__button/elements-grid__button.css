@@ -1,12 +1,15 @@
 .elements-grid__button{
-    background-image: url(../../../images/белое\ сердце.png);
+    background-image: url(../../../images/white\ heart.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
     width: 22px;
     height: 19px;
     border: none;
+    background-color: white;
 }
 .elements-grid__button:hover{
-    opacity: 0.6;
+    opacity: 0.5;
 }
 .elements-grid__button:active{
-    background-image: url(../../../images/черное\ сердце.svg);
+    background-image: url(../../../images/black\ heart.svg);
 }

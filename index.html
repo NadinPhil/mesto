@@ -15,58 +15,60 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="./images/ЖакИвКусто.svg" alt="Жак Ив Кусто">
+            <img class="profile__avatar" src="./images/Avatar.jpg" alt="Жак Ив Кусто">
             <div class="profile__info">
-                <h1 class="profile__title">Жак-Ив Кусто<img src="./images/Vector(3).svg" alt="Карандаш - редактировать"
-                        class="profile__edit"></h1>
+                <div class="profile__flex">
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <button class="profile__edit" type="button"></button>
+                </div>
                 <p class="profile__subtitle">Исследователь океана</p>
             </div>
-            <img src="./images/плюс.svg" alt="Плюс - добавить" class="profile__add">
+            <button type="button" class="profile__add"></button>
         </section>
         <section class="elements-grid">
-            <div class="elements-grid__item">
+            <article class="elements-grid__item">
                 <img class="elements-grid__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск">
                 <div class="elements-grid__text">
                     <h2 class="elements-grid__title">Карачаевск</h2>
-                    <button class="elements-grid__button"></button>
+                    <button aria-label="Лайк" type="button" class="elements-grid__button"></button>
                 </div>
-            </div>
-            <div class="elements-grid__item">
+            </article>
+            <article class="elements-grid__item">
                 <img class="elements-grid__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус">
                 <div class="elements-grid__text">
                     <h2 class="elements-grid__title">Гора Эльбрус</h2>
-                    <button class="elements-grid__button"></button>
+                    <button aria-label="Лайк" type="button" class="elements-grid__button"></button>
                 </div>
-            </div>
-            <div class="elements-grid__item">
+            </article>
+            <article class="elements-grid__item">
                 <img class="elements-grid__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
                 <div class="elements-grid__text">
                     <h2 class="elements-grid__title">Домбай</h2>
-                    <button class="elements-grid__button"></button>
+                    <button aria-label="Лайк" type="button" class="elements-grid__button"></button>
                 </div>
-            </div>
-            <div class="elements-grid__item">
+            </article>
+            <article class="elements-grid__item">
                 <img class="elements-grid__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус">
                 <div class="elements-grid__text">
                     <h2 class="elements-grid__title">Гора Эльбрус</h2>
-                    <button class="elements-grid__button"></button>
+                    <button aria-label="Лайк" type="button" class="elements-grid__button"></button>
                 </div>
-            </div>
-            <div class="elements-grid__item">
+            </article>
+            <article class="elements-grid__item">
                 <img class="elements-grid__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
                 <div class="elements-grid__text">
                     <h2 class="elements-grid__title">Домбай</h2>
-                    <button class="elements-grid__button"></button>
+                    <button aria-label="Лайк" type="button" class="elements-grid__button"></button>
                 </div>
-            </div>
-            <div class="elements-grid__item">
+            </article>
+            <article class="elements-grid__item">
                 <img class="elements-grid__image" src="./images/kirill-pershin-1088404-unsplash.png"
                     alt="Карачаево-Черкесия">
                 <div class="elements-grid__text">
                     <h2 class="elements-grid__title">Карачаево-Черкесия</h2>
-                    <button class="elements-grid__button"></button>
+                    <button aria-label="Лайк" type="button" class="elements-grid__button"></button>
                 </div>
-            </div>
+            </article>
         </section>
     </main>
 
@@ -75,12 +77,12 @@
     </footer>
     <div class="popup">
         <div class="popup__container">
-            <button type="button" class="popup__button"></button>
-            <form class="form">
+            <button aria-label="Закрыть" type="button" class="popup__button"></button>
+            <form name="form" class="form">
                 <div class="form__container">
-                    <p class="form__title">Редактировать профиль</p>
-                    <input type="text" name="title" value="" class="form__input-title">
-                    <input type="text" name="subtitle" value="" class="form__input-subtitle">
+                    <h2 class="form__title">Редактировать профиль</h2>
+                    <input type="text" name="title" value="" class="form__input form__input_text_title" required placeholder="Ваше имя">
+                    <input type="text" name="subtitle" value="" class="form__input form__input_text_subtitle" required placeholder="Ваша деятельность">
                     <button type="submit" class="form__button">Сохранить</button>
                 </div>
             </form>

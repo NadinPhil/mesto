@@ -1,5 +1,5 @@
-.form__title{
-    font-family: Inter;
+.form-edit__title{
+    font-family: "Inter", arial, sans-serif;
     font-weight: 900;
     font-size: 24px;
     line-height: 29px;
@@ -7,7 +7,7 @@
     margin: 0 0 54px;
 }
 @media (max-width: 320px){
-    .form__title{
+    .form-edit__title{
         font-size: 18px;
         line-height: 22px;
         margin-bottom: 75px;

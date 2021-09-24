@@ -1,11 +1,25 @@
 .elements-grid__button{
     background-image: url(../../../images/white\ heart.svg);
-    background-size: contain;
     background-repeat: no-repeat;
+    background-size: contain;
     width: 22px;
     height: 19px;
     border: none;
+    box-sizing: border-box;
     background-color: white;
+    cursor: pointer;
+}
+@media (max-width: 950px){
+    .elements-grid__button{
+        width: 20px;
+        height: 15px;
+    }
+}
+@media (max-width: 320px){
+    .elements-grid__button{
+        width: 22px;
+        height: 19px;
+    }
 }
 .elements-grid__button:hover{
     opacity: 0.5;

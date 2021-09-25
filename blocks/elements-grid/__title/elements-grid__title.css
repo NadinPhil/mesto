@@ -8,13 +8,12 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    max-width: 200px;
+    width: calc(100% - 22px);
 }
 @media (max-width: 1000px){
     .elements-grid__title{
         font-size: 18px;
         line-height: 22px;
-        max-width: 180px;
     }
 }
 @media (max-width: 320px){

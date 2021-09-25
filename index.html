@@ -19,9 +19,9 @@
             <div class="profile__info">
                 <div class="profile__flex">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button class="profile__edit" type="button"></button>
+                    <p class="profile__subtitle">Исследователь океана</p>
                 </div>
-                <p class="profile__subtitle">Исследователь океана</p>
+                <button class="profile__edit" type="button"></button>
             </div>
             <button type="button" class="profile__add"></button>
         </section>
@@ -78,14 +78,14 @@
     <div class="popup">
         <div class="popup__container">
             <button aria-label="Закрыть" type="button" class="popup__button"></button>
-            <form name="form-edit" class="form-edit">
-                <div class="form-edit__container">
-                    <h2 class="form-edit__title">Редактировать профиль</h2>
-                    <input type="text" name="title" value="" class="form-edit__input form-edit__input_text_title"
+            <form name="form-edit" class="form">
+                <div class="form__container">
+                    <h2 class="form__title">Редактировать профиль</h2>
+                    <input type="text" name="title" value="" class="form__input form__input_text_title"
                         required placeholder="Ваше имя">
-                    <input type="text" name="subtitle" value="" class="form-edit__input form-edit__input_text_subtitle"
+                    <input type="text" name="subtitle" value="" class="form__input form__input_text_subtitle"
                         required placeholder="Ваша деятельность">
-                    <button type="submit" class="form-edit__button">Сохранить</button>
+                    <button type="submit" class="form__button">Сохранить</button>
                 </div>
             </form>
         </div>

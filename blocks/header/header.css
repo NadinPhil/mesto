@@ -4,12 +4,12 @@
     border-style: none none solid none;
     font-family: "Inter", arial, sans-serif;
 }
-@media (max-width: 950px){
+@media (max-width: 1000px){
     .header{
         margin: 45px 100px 0px;
     }
 }
-@media (max-width: 570px){
+@media (max-width: 700px){
     .header{
         margin: 0;
         margin-top: 28px;

@@ -25,69 +25,60 @@
             </div>
             <button type="button" class="profile__add"></button>
         </section>
-        <section class="elements-grid">
-            <article class="elements-grid__item">
-                <img class="elements-grid__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск">
-                <div class="elements-grid__text">
-                    <h2 class="elements-grid__title">Карачаевск</h2>
-                    <button aria-label="Лайк" type="button" class="elements-grid__button"></button>
-                </div>
-            </article>
-            <article class="elements-grid__item">
-                <img class="elements-grid__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус">
-                <div class="elements-grid__text">
-                    <h2 class="elements-grid__title">Гора Эльбрус</h2>
-                    <button aria-label="Лайк" type="button" class="elements-grid__button"></button>
-                </div>
-            </article>
-            <article class="elements-grid__item">
-                <img class="elements-grid__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
-                <div class="elements-grid__text">
-                    <h2 class="elements-grid__title">Домбай</h2>
-                    <button aria-label="Лайк" type="button" class="elements-grid__button"></button>
-                </div>
-            </article>
-            <article class="elements-grid__item">
-                <img class="elements-grid__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус">
-                <div class="elements-grid__text">
-                    <h2 class="elements-grid__title">Гора Эльбрус</h2>
-                    <button aria-label="Лайк" type="button" class="elements-grid__button"></button>
-                </div>
-            </article>
-            <article class="elements-grid__item">
-                <img class="elements-grid__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
-                <div class="elements-grid__text">
-                    <h2 class="elements-grid__title">Домбай</h2>
-                    <button aria-label="Лайк" type="button" class="elements-grid__button"></button>
-                </div>
-            </article>
-            <article class="elements-grid__item">
-                <img class="elements-grid__image" src="./images/kirill-pershin-1088404-unsplash.png"
-                    alt="Карачаево-Черкесия">
-                <div class="elements-grid__text">
-                    <h2 class="elements-grid__title">Карачаево-Черкесия</h2>
-                    <button aria-label="Лайк" type="button" class="elements-grid__button"></button>
-                </div>
-            </article>
-        </section>
+        <div class="elements-grid">
+            <template id="elements-grid">
+                <ul>
+                    <li class="elements-grid__item">
+                        <img class="elements-grid__image" src="" alt="">
+                        <button aria-label="Удалить" type="button" class="elements-grid__delete"></button>
+                        <div class="elements-grid__text">
+                            <h2 class="elements-grid__title"></h2>
+                            <button aria-label="Лайк" type="button" class="elements-grid__like"></button>
+                        </div>
+                    </li>
+                </ul>
+            </template>
+        </div>
     </main>
 
     <footer class="footer">
         <p class="footer__copyright">&copy;2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_type_edit">
         <div class="popup__container">
             <button aria-label="Закрыть" type="button" class="popup__button"></button>
-            <form name="form-edit" class="form">
+            <form name="form-edit" class="form form_type_edit">
                 <div class="form__container">
                     <h2 class="form__title">Редактировать профиль</h2>
-                    <input type="text" name="title" value="" class="form__input form__input_text_title"
-                        required placeholder="Ваше имя">
-                    <input type="text" name="subtitle" value="" class="form__input form__input_text_subtitle"
-                        required placeholder="Ваша деятельность">
+                    <input type="text" name="title" value="" class="form__input form__input_text_title" required
+                        placeholder="Ваше имя">
+                    <input type="text" name="subtitle" value="" class="form__input form__input_text_subtitle" required
+                        placeholder="Ваша деятельность">
                     <button type="submit" class="form__button">Сохранить</button>
                 </div>
             </form>
+        </div>
+    </div>
+    <div class="popup popup_type_add">
+        <div class="popup__container">
+            <button aria-label="Закрыть" type="button" class="popup__button"></button>
+            <form name="form-add" class="form form_type_add">
+                <div class="form__container">
+                    <h2 class="form__title">Новое место</h2>
+                    <input type="text" name="title" value="" class="form__input form__input_text_name" required
+                        placeholder="Название">
+                    <input type="text" name="subtitle" value="" class="form__input form__input_text_link" required
+                        placeholder="Ссылка на картинку">
+                    <button type="submit" class="form__button">Создать</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="popup popup_type_image">
+        <div class="popup__container popup__container_type_image">
+            <button aria-label="Закрыть" type="button" class="popup__button"></button>
+            <img class="popup__link" src="" alt="">
+            <h2 class="popup__name"></h2>
         </div>
     </div>
     <script src="./script/index.js"></script>

@@ -1,4 +1,4 @@
-.elements-grid__button{
+.elements-grid__like{
     background-image: url(../../../images/white\ heart.svg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -11,20 +11,17 @@
     flex-shrink: 0;
 }
 @media (max-width: 950px){
-    .elements-grid__button{
+    .elements-grid__like{
         width: 21px;
         height: 17px;
     }
 }
 @media (max-width: 320px){
-    .elements-grid__button{
+    .elements-grid__like{
         width: 22px;
         height: 19px;
     }
 }
-.elements-grid__button:hover{
+.elements-grid__like:hover{
     opacity: 0.5;
-}
-.elements-grid__button:active{
-    background-image: url(../../../images/black\ heart.svg);
 }

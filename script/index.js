@@ -2,17 +2,17 @@ const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
 const popupImage = document.querySelector('.popup_type_image');
 const openPopupImageButton = document.querySelector('.popup__link');
-const closePopupImageButton = document.querySelector('.popup__button');
+const closePopupImageButton = popupImage.querySelector('.popup__button');
 const openPopupEditButton = document.querySelector('.profile__edit');
 const openPopupAddButton = document.querySelector('.profile__add');
 const closePopupEditButton = popupEdit.querySelector('.popup__button');
 const closePopupAddButton = popupAdd.querySelector('.popup__button');
-let formElementEdit = document.querySelector('.form_type_edit');
-let formElementAdd = document.querySelector('.form_type_add');
-let nameInput = document.querySelector('.form__input_text_title');
-let jobInput = document.querySelector('.form__input_text_subtitle');
-let nameProfile = document.querySelector('.profile__title');
-let jobProfile = document.querySelector('.profile__subtitle');
+const formElementEdit = document.querySelector('.form_type_edit');
+const formElementAdd = document.querySelector('.form_type_add');
+const nameInput = document.querySelector('.form__input_text_title');
+const jobInput = document.querySelector('.form__input_text_subtitle');
+const nameProfile = document.querySelector('.profile__title');
+const jobProfile = document.querySelector('.profile__subtitle');
 
 // карточка редактировать
 function openPopup(popup) {
@@ -95,10 +95,12 @@ function createCards(item){
         // наполняем содержимым
         const buttonDeleteElement = elementsGridItem.querySelector('.elements-grid__delete');
         const linkElement = elementsGridItem.querySelector('.elements-grid__image');
+        const linkNameElement = elementsGridItem.querySelector('.elements-grid__image');
         const nameElement = elementsGridItem.querySelector('.elements-grid__title');
         const buttonLikeElement = elementsGridItem.querySelector('.elements-grid__like');
         
         linkElement.src = item.link;
+        linkNameElement.alt = item.link;
         nameElement.textContent = item.name;
         
         linkElement.addEventListener('click', () => handlerOpenImage(item));
@@ -135,11 +137,13 @@ formElementAdd.addEventListener('submit', formSubmitSaveHandler);
 // открыть имейдж
 function handlerOpenImage(item) {
     const linkPopup = popupImage.querySelector('.popup__link');
+    const linkNamePopup = popupImage.querySelector('.popup__link');
     const namePopup = popupImage.querySelector('.popup__name');
     linkPopup.src = item.link;
+    linkNamePopup.alt = item.link;
     namePopup.textContent = item.name;
-    openPopupImageButton.addEventListener('click', () => openPopup(popupImage));
-    console.log(item);
-    }
+    openPopupImageButton.addEventListener('click', openPopup(popupImage));
+    };
 
-closePopupImageButton.addEventListener('click', () => closePopup(popupImage));
+    closePopupImageButton.addEventListener('click', () => closePopup(popupImage));
+    

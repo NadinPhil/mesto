@@ -33,7 +33,7 @@ function setNodeTextValue() {
     jobProfile.textContent = jobInput.value;
 }
 
-function formSubmitHandler(evt) {
+function handleProfileFormSubmit(evt) {
     evt.preventDefault();
     setNodeTextValue();
     closePopup(popupEdit);
@@ -46,7 +46,7 @@ openPopupEditButton.addEventListener('click', function() {
 
 closePopupEditButton.addEventListener('click', () => closePopup(popupEdit));
 
-formElementEdit.addEventListener('submit', formSubmitHandler);
+formElementEdit.addEventListener('submit', handleProfileFormSubmit);
 
 // массив
 const initialCards = [
@@ -88,19 +88,18 @@ function handlerDeleteCard (evt){
     elementsGridDelete.remove();
 }
 
-function createCards(item){
+function createCard(item){
         const elementsGridTemplate = document.querySelector('#elements-grid').content;
         // клонируем содержимое тега template
         const elementsGridItem = elementsGridTemplate.querySelector('.elements-grid__item').cloneNode(true);
         // наполняем содержимым
         const buttonDeleteElement = elementsGridItem.querySelector('.elements-grid__delete');
         const linkElement = elementsGridItem.querySelector('.elements-grid__image');
-        const linkNameElement = elementsGridItem.querySelector('.elements-grid__image');
         const nameElement = elementsGridItem.querySelector('.elements-grid__title');
         const buttonLikeElement = elementsGridItem.querySelector('.elements-grid__like');
         
         linkElement.src = item.link;
-        linkNameElement.alt = item.link;
+        linkElement.alt = item.link;
         nameElement.textContent = item.name;
         
         linkElement.addEventListener('click', () => handlerOpenImage(item));
@@ -111,7 +110,8 @@ function createCards(item){
 };
 // перебрать массив  
 initialCards.forEach(function(data){
-    const arrCard = createCards(data)
+    const arrCard = createCard(data)
+    console.log(data);
     elementsGrid.append(arrCard);
 });
 
@@ -122,25 +122,23 @@ openPopupAddButton.addEventListener('click', () => openPopup(popupAdd));
 closePopupAddButton.addEventListener('click', () => closePopup(popupAdd));
 
 // добавить карточку через кнопку
-function formSubmitSaveHandler(evt) {
+function handleCardFormSubmit(evt) {
     evt.preventDefault();
     const item = {
         name: document.querySelector('.form__input_text_name').value,
         link: document.querySelector('.form__input_text_link').value
     }
-    elementsGrid.prepend(createCards(item));
-    //evt.currentTarget.reset();
+    elementsGrid.prepend(createCard(item));
     closePopup(popupAdd);
 }
-formElementAdd.addEventListener('submit', formSubmitSaveHandler);
+formElementAdd.addEventListener('submit', handleCardFormSubmit);
 
 // открыть имейдж
 function handlerOpenImage(item) {
     const linkPopup = popupImage.querySelector('.popup__link');
-    const linkNamePopup = popupImage.querySelector('.popup__link');
     const namePopup = popupImage.querySelector('.popup__name');
     linkPopup.src = item.link;
-    linkNamePopup.alt = item.link;
+    linkPopup.alt = item.link;
     namePopup.textContent = item.name;
     openPopupImageButton.addEventListener('click', openPopup(popupImage));
     };

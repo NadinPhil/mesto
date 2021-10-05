@@ -1,4 +1,5 @@
 .elements-grid{
+    padding: 0;
     margin: 47.25px 200px 67px 200px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);

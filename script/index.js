@@ -13,6 +13,7 @@ const nameInput = document.querySelector('.form__input_text_title');
 const jobInput = document.querySelector('.form__input_text_subtitle');
 const nameProfile = document.querySelector('.profile__title');
 const jobProfile = document.querySelector('.profile__subtitle');
+const elementsGrid = document.querySelector('.elements-grid');
 
 // карточка редактировать
 function openPopup(popup) {
@@ -76,18 +77,17 @@ const initialCards = [
     }
 ];
 
-// добавить карточку с помощью темплейт
-const elementsGrid = document.querySelector('.elements-grid');
 // добавить лайк
-function handlerActiveToggle(evt){
+function handleActiveToggle(evt){
     evt.currentTarget.classList.toggle('elements-grid__like_active');
 }
 // удалить карточку
-function handlerDeleteCard (evt){
+function handleDeleteCard (evt){
     const  elementsGridDelete = evt.target.closest('.elements-grid__item');
     elementsGridDelete.remove();
 }
 
+// добавить карточку с помощью темплейт
 function createCard(item){
         const elementsGridTemplate = document.querySelector('#elements-grid').content;
         // клонируем содержимое тега template
@@ -99,19 +99,18 @@ function createCard(item){
         const buttonLikeElement = elementsGridItem.querySelector('.elements-grid__like');
         
         linkElement.src = item.link;
-        linkElement.alt = item.link;
+        linkElement.alt = item.name;
         nameElement.textContent = item.name;
         
         linkElement.addEventListener('click', () => handlerOpenImage(item));
-        buttonDeleteElement.addEventListener('click', handlerDeleteCard);
-        buttonLikeElement.addEventListener('click', handlerActiveToggle);
+        buttonDeleteElement.addEventListener('click', handleDeleteCard);
+        buttonLikeElement.addEventListener('click', handleActiveToggle);
      
         return elementsGridItem
 };
 // перебрать массив  
 initialCards.forEach(function(data){
-    const arrCard = createCard(data)
-    console.log(data);
+    const arrCard = createCard(data);
     elementsGrid.append(arrCard);
 });
 
@@ -138,7 +137,7 @@ function handlerOpenImage(item) {
     const linkPopup = popupImage.querySelector('.popup__link');
     const namePopup = popupImage.querySelector('.popup__name');
     linkPopup.src = item.link;
-    linkPopup.alt = item.link;
+    linkPopup.alt = item.name;
     namePopup.textContent = item.name;
     openPopupImageButton.addEventListener('click', openPopup(popupImage));
     };

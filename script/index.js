@@ -15,6 +15,8 @@ const nameProfile = document.querySelector('.profile__title');
 const jobProfile = document.querySelector('.profile__subtitle');
 const elementsGrid = document.querySelector('.elements-grid');
 
+
+
 // карточка редактировать
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -116,7 +118,7 @@ initialCards.forEach(function(data){
 
 //открытие и закрытие карточки добавить
 
-openPopupAddButton.addEventListener('click', () => openPopup(popupAdd));
+openPopupAddButton.addEventListener('click', () => openPopup(popupAdd)); 
 
 closePopupAddButton.addEventListener('click', () => closePopup(popupAdd));
 

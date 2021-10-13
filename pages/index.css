@@ -41,4 +41,6 @@
 @import url(../blocks/form/__input/_text/form__input_text_title.css);
 @import url(../blocks/form/__input/_text/form__input_text_link.css);
 @import url(../blocks/form/__input/_text/form__input_text_name.css);
-
+@import url(../blocks/form/__input/_invalid/form__input_invalid.css);
+@import url(../blocks/form/__button/_invalid/form__button_invalid.css);
+@import url(../blocks/error/error.css);

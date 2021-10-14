@@ -17,6 +17,7 @@ const elementsGrid = document.querySelector('.elements-grid');
 
 
 
+
 // карточка редактировать
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -118,7 +119,11 @@ initialCards.forEach(function(data){
 
 //открытие и закрытие карточки добавить
 
-openPopupAddButton.addEventListener('click', () => openPopup(popupAdd)); 
+openPopupAddButton.addEventListener('click', () => {
+    openPopup(popupAdd)
+    const button = popupAdd.querySelector('.form__button')
+    toggleButton(button, false, config)
+}); 
 
 closePopupAddButton.addEventListener('click', () => closePopup(popupAdd));
 
@@ -146,3 +151,21 @@ function handlerOpenImage(item) {
 
     closePopupImageButton.addEventListener('click', () => closePopup(popupImage));
     
+// закрытие попап через клавишу
+
+  document.addEventListener('keydown', function(evt) {
+    if (evt.key === 'Escape') {
+        const popup = document.querySelector('.popup_opened');
+        closePopup(popup);
+    }
+});
+
+// закрытие попап через оверлей
+
+document.addEventListener('click', function(evt) {
+    if (evt.target.classList.contains('popup')) {
+        const popup = document.querySelector('.popup_opened');
+        closePopup(popup);
+    }
+});
+ 

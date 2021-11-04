@@ -31,9 +31,9 @@ export default class Card {
         this._buttonLikeElement = this._element.querySelector('.elements-grid__like');
     
         // Добавим данные
-        this._element.querySelector('.elements-grid__image').src = this._data.link;
-        this._element.querySelector('.elements-grid__image').alt = this._data.name;
-        this._element.querySelector('.elements-grid__title').textContent = this._data.name;
+        this._linkElement.src = this._data.link;
+        this._linkElement.alt = this._data.name;
+        this._nameElement.textContent = this._data.name;
 
         this._setEventListener();
       
@@ -48,7 +48,7 @@ export default class Card {
       
       //Метод удаления карточки
       _delete() {
-        this._buttonDeleteElement.closest('.elements-grid__item').remove();
+        this._element.remove();
     }
       
       //Метод закрытия изображения (кнопка крестик)

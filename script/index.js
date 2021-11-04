@@ -1,5 +1,5 @@
-import Card from "./card.js";
-import {FormValidator, config}  from "./formValidator.js";
+import Card from "./Card.js";
+import {FormValidator, config}  from "./FormValidator.js";
 
 const elementsGrid = document.querySelector('.elements-grid');
 const popupEdit = document.querySelector('.popup_type_edit');
@@ -16,6 +16,10 @@ const nameInput = document.querySelector('.form__input_text_title');
 const jobInput = document.querySelector('.form__input_text_subtitle');
 const nameProfile = document.querySelector('.profile__title');
 const jobProfile = document.querySelector('.profile__subtitle');
+const inputPictureName = document.querySelector('.form__input_text_name');  
+const inputPictureLink = document.querySelector('.form__input_text_link');
+const popupImageLink = popupImage.querySelector('.popup__link');
+const popupImageName = popupImage.querySelector('.popup__name');
 const initialCards = [
     {
         name: 'Архыз',
@@ -58,10 +62,11 @@ initialCards.forEach( (data) => {
 });
 
 function handlerImageClick(data){
-    popupImage.querySelector('.popup__link').src = data.link;
-    popupImage.querySelector('.popup__name').textContent = data.name;
+    popupImageLink.src = data.link;
+    popupImageName.textContent = data.name;
     openPopup(popupImage)
 }
+
 
 // карточка редактировать
 function openPopup(popup) {
@@ -104,7 +109,6 @@ formElementEdit.addEventListener('submit', handleProfileFormSubmit);
 openPopupAddButton.addEventListener('click', () => {
     openPopup(popupAdd);
     validateAddForm.toggleButton(false);
-    console.log(123)
 }); 
 
 closePopupAddButton.addEventListener('click', () => closePopup(popupAdd));
@@ -114,15 +118,15 @@ closePopupAddButton.addEventListener('click', () => closePopup(popupAdd));
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
     const item = {
-        name: document.querySelector('.form__input_text_name').value,
-        link: document.querySelector('.form__input_text_link').value
+        name: inputPictureName.value,
+        link: inputPictureLink.value
     };
     elementsGrid.prepend(createCard(item));
     closePopup(popupAdd);
-    document.getElementById('link').value = '';
-    document.getElementById('picture').value = '';  
+    inputPictureLink.value = '';
+    inputPictureName.value = '';  
 }
-  
+
 
 // закрытие попап через клавишу
 function closeByEscape(evt) {

@@ -1,6 +1,6 @@
-import Card from "./Card.js";
-import {FormValidator, config}  from "./FormValidator.js";
-
+import Card from "../script/Card.js";
+import {FormValidator, config}  from "../script/FormValidator.js";
+import '../pages/index.css'; 
 const elementsGrid = document.querySelector('.elements-grid');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
@@ -145,4 +145,11 @@ function closeByEscape(evt) {
 });
 
 
- 
+console.log('Hello, World!')
+
+const numbers = [2, 3, 5];
+
+// Стрелочная функция. Не запнётся ли на ней Internet Explorer?
+const doubledNumbers = numbers.map(number => number * 2);
+
+console.log(doubledNumbers); // 4, 6, 10 

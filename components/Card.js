@@ -1,12 +1,10 @@
 export default class Card {
-    constructor(data, templateSelector, handleCardFormSubmit, handlerImageClick) {
+    constructor({ data, handlerImageClick }, templateSelector){
         this._handlerImageClick = handlerImageClick;
-        this._handleCardFormSubmit = handleCardFormSubmit;
         this._templateSelector = templateSelector;
         this._data = data;
-        this._element = null; 
+        this._element = null;  
     }
-    
     _getTemplate() {
         // забираем разметку из HTML и клонируем элемент
           const cardElement = document
@@ -51,12 +49,6 @@ export default class Card {
         this._element.remove();
     }
       
-      //Метод закрытия изображения (кнопка крестик)
-      _closeImage() {
-      this._popupImage.classList.remove('popup_opened');
-      }
-
-      
       //Назначаем слушатель
       _setEventListener() {
         this._buttonLikeElement.addEventListener('click', () => {
@@ -70,10 +62,7 @@ export default class Card {
                 name: this._data.name, 
                 link: this._data.link});
         });
-        this._popupImage.querySelector('.popup__button').addEventListener('click', () => {
-            this._closeImage();
-        });
-        this._popupAdd.querySelector('.form_type_add').addEventListener('submit', this._handleCardFormSubmit);
+      
       }
         
 }

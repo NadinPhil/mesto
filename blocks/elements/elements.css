@@ -1,18 +1,3 @@
 .elements{
-    margin: 47.25px 200px 67px 200px;
-}
-@media (max-width: 1000px){
-    .elements{
-        margin: 47.25px 100px 67px 100px;
-    }
-}
-@media (max-width: 700px){
-    .elements{
-        margin: 0px 19px 50px 19px;
-    }
-}
-@media (max-width: 400px){
-    .elements{
-        margin-bottom: 48px;
-    }
+  
 }

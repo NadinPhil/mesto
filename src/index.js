@@ -1,25 +1,22 @@
-import Card from "../script/Card.js";
-import {FormValidator, config}  from "../script/FormValidator.js";
+import Card from "../components/Card.js";
+import {FormValidator, config}  from "../components/FormValidator.js";
+import UserInfo from "../components/UserInfo.js";
+import Section from "../components/Section.js";
+import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import '../pages/index.css'; 
-const elementsGrid = document.querySelector('.elements-grid');
+
+
 const popupEdit = document.querySelector('.popup_type_edit');
-const popupAdd = document.querySelector('.popup_type_add');
-const popupImage = document.querySelector('.popup_type_image');
-const closePopupImageButton = popupImage.querySelector('.popup__button');
 const openPopupEditButton = document.querySelector('.profile__edit');
 const openPopupAddButton = document.querySelector('.profile__add');
-const closePopupEditButton = popupEdit.querySelector('.popup__button');
-const closePopupAddButton = popupAdd.querySelector('.popup__button');
 const formElementEdit = document.querySelector('.form_type_edit');
-const formElementAdd = document.querySelector('.form_type_add');
-const nameInput = document.querySelector('.form__input_text_title');
-const jobInput = document.querySelector('.form__input_text_subtitle');
-const nameProfile = document.querySelector('.profile__title');
-const jobProfile = document.querySelector('.profile__subtitle');
+const nameInput = popupEdit.querySelector('.form__input_text_title');
+const jobInput = popupEdit.querySelector('.form__input_text_subtitle');
 const inputPictureName = document.querySelector('.form__input_text_name');  
 const inputPictureLink = document.querySelector('.form__input_text_link');
-const popupImageLink = popupImage.querySelector('.popup__link');
-const popupImageName = popupImage.querySelector('.popup__name');
+
 const initialCards = [
     {
         name: 'Архыз',
@@ -46,110 +43,86 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
 const validateAddForm = new FormValidator(config, '.form_type_add');
 const validateEditForm = new FormValidator(config, '.form_type_edit');
+const PopupEdit = new PopupWithForm('.popup_type_edit', handleCardFormSubmit);
+const PopupAdd = new PopupWithForm('.popup_type_add', handleCardFormSubmit);
+const PopupImage = new PopupWithImage('.popup_type_image');
+const PopupEditClose = new Popup('.popup_type_edit');
 
 validateAddForm.disabledButton();
 validateAddForm.enableValidation();
 validateEditForm.enableValidation();
 
-function createCard(dataRender){
-    return new Card(dataRender, '#elements-grid', handleCardFormSubmit, handlerImageClick).generateCard();
-}
-initialCards.forEach( (data) => {
-    const newCard = createCard(data)
-    elementsGrid.append(newCard);
-});
-
-function handlerImageClick(data){
-    popupImageLink.src = data.link;
-    popupImageName.textContent = data.name;
-    openPopup(popupImage)
+function createCard(data){
+    return new Card({ data, handlerImageClick }, '#elements-grid').generateCard();
 }
 
-
-// карточка редактировать
-function openPopup(popup) {
-    popup.classList.add('popup_opened');
-    document.addEventListener('keydown', closeByEscape); 
-}
-
-function closePopup(popup) {
-    popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closeByEscape); 
-}
-
-function setPopupInputValue() {
-    nameInput.value = nameProfile.textContent;
-    jobInput.value = jobProfile.textContent;
-}
-
-function setNodeTextValue() {
-    nameProfile.textContent = nameInput.value;
-    jobProfile.textContent = jobInput.value;
-}
-
-function handleProfileFormSubmit(evt) {
-    evt.preventDefault();
-    setNodeTextValue();
-    closePopup(popupEdit);
-}
-
-openPopupEditButton.addEventListener('click', function() {
-    setPopupInputValue();
-    openPopup(popupEdit);
-});
-
-closePopupEditButton.addEventListener('click', () => closePopup(popupEdit));
-
-formElementEdit.addEventListener('submit', handleProfileFormSubmit);
-
-
-//открытие и закрытие карточки добавить
-openPopupAddButton.addEventListener('click', () => {
-    openPopup(popupAdd);
-    validateAddForm.toggleButton(false);
-}); 
-
-closePopupAddButton.addEventListener('click', () => closePopup(popupAdd));
-
-
-// добавить карточку через кнопку
-function handleCardFormSubmit(evt) {
-    evt.preventDefault();
+// добавление карточки 
+function handleCardFormSubmit() {
     const item = {
         name: inputPictureName.value,
         link: inputPictureLink.value
     };
-    elementsGrid.prepend(createCard(item));
-    closePopup(popupAdd);
+    cardList.addItem(createCard(item));
+    PopupAdd.close();
     inputPictureLink.value = '';
     inputPictureName.value = '';  
 }
 
-
-// закрытие попап через клавишу
-function closeByEscape(evt) {
-    if (evt.key === 'Escape') {
-      const openedPopup = document.querySelector('.popup_opened');
-      closePopup(openedPopup); 
+const cardList = new Section({
+    items: initialCards,
+    renderer: (item) => { 
+      const card = createCard(item);
+      cardList.addItem(card);
     }
-  }
+  },
+  '.card-list');
 
+cardList.renderItems(); 
 
-// закрытие попап через оверлей
- document.addEventListener('click', function(evt) {
-    if (evt.target.classList.contains('popup')) {
-        closePopup(evt.target);
-    }
+function handlerImageClick(data){
+    PopupImage.open(data)
+}
+
+PopupImage.setEventListeners(); 
+
+// карточка редактирования профиля 
+const userInfo = new UserInfo (
+    {nameProfile: '.profile__title', 
+    jobProfile: '.profile__subtitle'});
+
+userInfo.setUserInfo({
+    name: 'Жак-Ив Кусто',
+    job: 'Исследователь океана',
 });
 
+userInfo.updateUserInfo();
 
-console.log('Hello, World!')
+formElementEdit.addEventListener('submit', evt => {
+    evt.preventDefault();
+    userInfo.setUserInfo({
+        name: nameInput.value,
+        job: jobInput.value,
+    });
+    userInfo.updateUserInfo();
+    PopupEdit.close();
+});
 
-const numbers = [2, 3, 5];
+PopupEditClose.setEventListeners(); 
 
-// Стрелочная функция. Не запнётся ли на ней Internet Explorer?
-const doubledNumbers = numbers.map(number => number * 2);
+openPopupEditButton.addEventListener('click', () => {
+    PopupEdit.open();
+    const getUserInfo = userInfo.getUserInfo();
+    nameInput.value = getUserInfo.name;
+    jobInput.value = getUserInfo.job;
+});
 
-console.log(doubledNumbers); // 4, 6, 10 
+//открытие и закрытие карточки добавить
+openPopupAddButton.addEventListener('click', () => {
+    PopupAdd.open(); 
+    validateAddForm.toggleButton(false);
+}); 
+
+PopupAdd.setEventListeners();   

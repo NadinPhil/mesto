@@ -21,8 +21,6 @@ export default class Card {
         // Запишем разметку в приватное поле _element. 
         // Так у других элементов появится доступ к ней.
         this._element = this._getTemplate();
-        this._popupImage = document.querySelector('.popup_type_image');
-        this._popupAdd = document.querySelector('.popup_type_add');
         this._buttonDeleteElement = this._element.querySelector('.elements-grid__delete');
         this._linkElement = this._element.querySelector('.elements-grid__image');
         this._nameElement = this._element.querySelector('.elements-grid__title');
@@ -47,6 +45,7 @@ export default class Card {
       //Метод удаления карточки
       _delete() {
         this._element.remove();
+        this._element = null;
     }
       
       //Назначаем слушатель

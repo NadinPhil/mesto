@@ -2,53 +2,23 @@ import Card from "../components/Card.js";
 import {FormValidator, config}  from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
-import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import '../pages/index.css';
+import {initialCards} from "../components/array.js";
+import './index.css';
 
-const popupEdit = document.querySelector('.popup_type_edit');
+const popupEditForm = document.querySelector('.popup_type_edit');
 const openPopupEditButton = document.querySelector('.profile__edit');
 const openPopupAddButton = document.querySelector('.profile__add');
-const formElementEdit = document.querySelector('.form_type_edit');
-const nameInput = popupEdit.querySelector('.form__input_text_title');
-const jobInput = popupEdit.querySelector('.form__input_text_subtitle');
+const nameInput = popupEditForm.querySelector('.form__input_text_title');
+const jobInput = popupEditForm.querySelector('.form__input_text_subtitle');
 const inputPictureName = document.querySelector('.form__input_text_name');  
 const inputPictureLink = document.querySelector('.form__input_text_link');
-
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
 const validateAddForm = new FormValidator(config, '.form_type_add');
 const validateEditForm = new FormValidator(config, '.form_type_edit');
-const PopupEdit = new PopupWithForm('.popup_type_edit', handleCardFormSubmit);
-const PopupAdd = new PopupWithForm('.popup_type_add', handleCardFormSubmit);
-const PopupImage = new PopupWithImage('.popup_type_image');
-const PopupEditClose = new Popup('.popup_type_edit');
+const popupEdit = new PopupWithForm('.popup_type_edit', handlerformElementEdit);
+const popupAdd = new PopupWithForm('.popup_type_add', handleCardFormSubmit);
+const popupImage = new PopupWithImage('.popup_type_image');
 
 validateAddForm.disabledButton();
 validateAddForm.enableValidation();
@@ -65,7 +35,7 @@ function handleCardFormSubmit() {
         link: inputPictureLink.value
     };
     cardList.addItem(createCard(item));
-    PopupAdd.close();
+    popupAdd.close();
     inputPictureLink.value = '';
     inputPictureName.value = '';  
 }
@@ -82,10 +52,10 @@ const cardList = new Section({
 cardList.renderItems(); 
 
 function handlerImageClick(data){
-    PopupImage.open(data)
+    popupImage.open(data)
 }
 
-PopupImage.setEventListeners(); 
+popupImage.setEventListeners(); 
 
 // карточка редактирования профиля 
 const userInfo = new UserInfo (
@@ -99,20 +69,19 @@ userInfo.setUserInfo({
 
 userInfo.updateUserInfo();
 
-formElementEdit.addEventListener('submit', evt => {
-    evt.preventDefault();
+function handlerformElementEdit() {
     userInfo.setUserInfo({
         name: nameInput.value,
         job: jobInput.value,
     });
     userInfo.updateUserInfo();
-    PopupEdit.close();
-});
+    popupEdit.close();
+};
 
-PopupEditClose.setEventListeners(); 
+popupEdit.setEventListeners(); 
 
 openPopupEditButton.addEventListener('click', () => {
-    PopupEdit.open();
+    popupEdit.open();
     const getUserInfo = userInfo.getUserInfo();
     nameInput.value = getUserInfo.name;
     jobInput.value = getUserInfo.job;
@@ -120,8 +89,8 @@ openPopupEditButton.addEventListener('click', () => {
 
 //открытие и закрытие карточки добавить
 openPopupAddButton.addEventListener('click', () => {
-    PopupAdd.open(); 
+    popupAdd.open(); 
     validateAddForm.toggleButton(false);
 }); 
 
-PopupAdd.setEventListeners();   
+popupAdd.setEventListeners();   

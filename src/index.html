@@ -10,11 +10,11 @@
 
 <body class="page">
     <header class="header">
-        <img src="<%=require('../images/Vector.svg')%>"  alt="Логотип" class="header__logo">
+        <img src="<%=require('./images/Vector.svg')%>"  alt="Логотип" class="header__logo">
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="<%=require('../images/Avatar.jpg')%>" alt="Жак Ив Кусто">
+            <img class="profile__avatar" src="<%=require('./images/Avatar.jpg')%>" alt="Жак Ив Кусто">
             <div class="profile__info">
                 <div class="profile__flex">
                     <h1 class="profile__title"></h1>
@@ -28,7 +28,9 @@
             <ul class="elements-grid">
                 <template id="elements-grid">
                     <li class="elements-grid__item">
-                        <img class="elements-grid__image">
+                        <div class="elements-grid__img-container">
+                            <img class="elements-grid__image" > 
+                        </div>
                         <button aria-label="Удалить" type="button" class="elements-grid__delete"></button>
                         <div class="elements-grid__text">
                             <h2 class="elements-grid__title"></h2>

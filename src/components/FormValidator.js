@@ -12,8 +12,9 @@ export const config = {
       this._config = config;
       this._element = document.querySelector(popupFormElement);
       this._button = this._element.querySelector(
-        this._config.submitButtonSelector
-      );
+        this._config.submitButtonSelector);
+      this._inputList = this._element.querySelectorAll(
+        this._config.inputSelector); 
     }
   
     // показать ошибку
@@ -60,14 +61,7 @@ export const config = {
   
     // списки событий
     _setEventListers = () => {
-      const inputList = this._element.querySelectorAll(
-        this._config.inputSelector
-      );
-      const submitButton = this._element.querySelector(
-        this._config.submitButtonSelector
-      );
-  
-      Array.from(inputList).forEach((inputElement) => {
+      Array.from(this._inputList).forEach((inputElement) => {
         inputElement.addEventListener("input", () => {
           const isFormValid = this._element.checkValidity();
           this._checkInput(inputElement), this.toggleButton(isFormValid);
@@ -81,7 +75,7 @@ export const config = {
   
     // включить валидацию
     enableValidation() {
-      const forms = document.querySelectorAll(this._config.formSelector);
+      const forms = this._element.querySelectorAll(this._config.formSelector);
       Array.from(forms).forEach((formElement) => {
         this._setEventListers(formElement);
       });

@@ -75,10 +75,6 @@ export const config = {
   
     // включить валидацию
     enableValidation() {
-      const forms = this._element.querySelectorAll(this._config.formSelector);
-      Array.from(forms).forEach((formElement) => {
-        this._setEventListers(formElement);
-      });
       this._setEventListers();
     }
   }

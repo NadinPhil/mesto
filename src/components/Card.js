@@ -3,7 +3,7 @@ export default class Card {
         this._handlerImageClick = handlerImageClick;
         this._templateSelector = templateSelector;
         this._data = data;  //данные карточки
-        console.log(data);
+        //console.log(data);
         this._likes = data.likes; //массив лайков
         this._element = null;
         this.id = data._id; //айди карточки

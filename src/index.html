@@ -14,7 +14,10 @@
     </header>
     <main class="content">
         <section class="profile">
+            <div class="profile__avatar-container">
             <img class="profile__avatar" src="<%=require('./images/Avatar.jpg')%>" alt="Жак Ив Кусто">
+            <div class="profile__edit-container"></div>
+            </div>
             <div class="profile__info">
                 <div class="profile__flex">
                     <h1 class="profile__title"></h1>
@@ -34,7 +37,10 @@
                         <button aria-label="Удалить" type="button" class="elements-grid__delete"></button>
                         <div class="elements-grid__text">
                             <h2 class="elements-grid__title"></h2>
+                            <div class="elements-grid__like-container">
                             <button aria-label="Лайк" type="button" class="elements-grid__like"></button>
+                            <h2 class="elements-grid__like-number">0</h2>
+                            </div>
                         </div>
                     </li>
                 </template>
@@ -76,6 +82,31 @@
                         placeholder="Ссылка на картинку" id="link">
                     <span id="link-error" class="error"></span>
                     <button type="submit" class="form__button">Создать</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="popup popup_type_avatar">
+        <div class="popup__container">
+            <button aria-label="Закрыть" type="button" class="popup__button"></button>
+            <form name="form-avatar" class="form form_type_avatar" novalidate>
+                <div class="form__container">
+                    <h2 class="form__title">Обновить аватар</h2>
+                    <input type="url" name="subtitle" value="" class="form__input form__input_text_link" required
+                        placeholder="Ссылка на картинку" id="link">
+                    <span id="link-error" class="error"></span>
+                    <button type="submit" class="form__button">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="popup popup_type_delete">
+        <div class="popup__container">
+            <button aria-label="Закрыть" type="button" class="popup__button"></button>
+            <form name="form-avatar" class="form form_type_delete" novalidate>
+                <div class="form__container">
+                    <h2 class="form__title">Вы уверены?</h2>
+                    <button type="submit" class="form__button">Да</button>
                 </div>
             </form>
         </div>

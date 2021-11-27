@@ -64,7 +64,8 @@ export default class Card {
             //this._like();
             this._handlerLikeClick(this);
         });
-        this._buttonDeleteElement.addEventListener('click', () => {
+        this._buttonDeleteElement.addEventListener('click', (e) => {
+          e.prevenDefault();
             this._handlerCardDelete(this);
 
         });

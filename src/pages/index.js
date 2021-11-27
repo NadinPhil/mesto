@@ -22,6 +22,7 @@ const popupEdit = new PopupWithForm('.popup_type_edit', handlerformElementEdit);
 const popupAdd = new PopupWithForm('.popup_type_add', handleCardFormSubmit);
 const popupImage = new PopupWithImage('.popup_type_image');
 const popupSubmit = new PopupWithSubmit('.popup_type_delete');
+popupSubmit.setEventListeners();
 
 validateAddForm.disabledButton();
 validateAddForm.enableValidation();
@@ -86,8 +87,7 @@ popupImage.setEventListeners();
 
 //удаление карточки
 function handlerCardDelete(card) {
-    popupSubmit.setActionSubmit( () => {
-        popupSubmit.setEventListeners()
+    popupSubmit.setActionSubmit(() => {
         api.removeCard(card)
         .then(cardId => card.delete(cardId))
     });

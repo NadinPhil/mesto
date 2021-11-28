@@ -58,10 +58,10 @@
             <form name="form-edit" class="form form_type_edit" novalidate>
                 <div class="form__container">
                     <h2 class="form__title">Редактировать профиль</h2>
-                    <input type="text" name="title" value="" class="form__input form__input_text_title" required
+                    <input type="text" name="name" value="" class="form__input form__input_text_title" required
                         placeholder="Ваше имя" id="name" minlength="2" maxlength="40">
                     <span id="name-error" class="error"></span>
-                    <input type="text" name="subtitle" value="" class="form__input form__input_text_subtitle" required
+                    <input type="text" name="about" value="" class="form__input form__input_text_subtitle" required
                         placeholder="Ваша деятельность" id="job" minlength="2" maxlength="200">
                     <span id="job-error" class="error"></span>
                     <button type="submit" class="form__button">Сохранить</button>
@@ -75,10 +75,10 @@
             <form name="form-add" class="form form_type_add" novalidate>
                 <div class="form__container">
                     <h2 class="form__title">Новое место</h2>
-                    <input type="text" name="title" value="" class="form__input form__input_text_name" required
+                    <input type="text" name="name" value="" class="form__input form__input_text_name" required
                         placeholder="Название" id="picture" minlength="2" maxlength="30">
                     <span id="picture-error" class="error"></span>
-                    <input type="url" name="subtitle" value="" class="form__input form__input_text_link" required
+                    <input type="url" name="link" value="" class="form__input form__input_text_link" required
                         placeholder="Ссылка на картинку" id="link">
                     <span id="link-error" class="error"></span>
                     <button type="submit" class="form__button">Создать</button>
@@ -92,7 +92,7 @@
             <form name="form-avatar" class="form form_type_avatar" novalidate>
                 <div class="form__container">
                     <h2 class="form__title">Обновить аватар</h2>
-                    <input type="url" name="subtitle" value="" class="form__input form__input_text_link" required
+                    <input type="url" name="avatar" value="" class="form__input form__input_text_link" required
                         placeholder="Ссылка на картинку" id="link">
                     <span id="link-error" class="error"></span>
                     <button type="submit" class="form__button">Сохранить</button>

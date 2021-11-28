@@ -63,13 +63,16 @@ removeCardLike(cardId){
       }) 
      
     }
-
+    
 //добавление карточки
 addCard(data){
     return fetch( `${this._url}/cards`, {
         method: "POST",
         headers:  this._headers,
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+            name: data.name,
+            link: data.link
+        }),
     })
     .then (res => {
         if (res.ok) {
@@ -82,12 +85,16 @@ addCard(data){
 
 //редактирования профиля
 editUserInfo(data){
+    console.log(data)
     fetch( `${this._url}/users/me`, {
         method: 'PATCH',
         headers: {
             headers:  this._headers,
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+            name: data.name,
+            about: data.about
+        })
       })
       .then (res => {
         if (res.ok) {
@@ -113,8 +120,23 @@ removeCard(cardId){
      
     }
 
-
-
-//заменить аватар (PATCH)
+//изменение аватара 
+editUserAvatar(userAvatar){
+    fetch( `${this._url}/users/me/avatar`, {
+        method: 'PATCH',
+        headers: {
+            headers:  this._headers,
+        },
+        body: JSON.stringify({
+            avatar: userAvatar.avatar
+        })
+      })
+      .then (res => {
+        if (res.ok) {
+            return res.json();
+        }
+      return Promise.reject('Произошла ошибка при редактировании профиля')
+      }) 
+    }
 
 }

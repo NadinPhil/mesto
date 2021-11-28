@@ -11,7 +11,6 @@
     background-repeat: no-repeat;
     background-size: contain;
     cursor: pointer;
+    opacity: 0;
 }
-.elements-grid__delete:hover{
-    opacity: 0.6;
-}
+

@@ -3,11 +3,13 @@ export default class Card {
         this._handlerImageClick = handlerImageClick;
         this._templateSelector = templateSelector;
         this._data = data;  //данные карточки
-        //console.log(data);
+        console.log(data);
+
         this._likes = data.likes; //массив лайков
         this._element = null;
         this.id = data._id; //айди карточки
         this._currentUserId = data.currentUserId; //айди текущего пользователя
+        this._itemOwnerId = data.owner._id; //айди пользователя-создателя
         this._handlerCardDelete = handlerCardDelete;
         this._handlerLikeClick = handlerLikeClick;
         
@@ -23,7 +25,11 @@ export default class Card {
         // вернём DOM-элемент карточки
           return cardElement;
       } 
-      
+      _getView() {
+        if( this._currentUserId === this._itemOwnerId){
+          this._buttonDeleteElement.classList.add('.elements-grid__delete_active');
+        }
+      }
       generateCard() {
         // Запишем разметку в приватное поле _element. 
         // Так у других элементов появится доступ к ней.
@@ -40,6 +46,7 @@ export default class Card {
         this._nameElement.textContent = this._data.name;
 
         this._setEventListener();
+        this._getView();
         this._renewLikes();
         this._buttonLikeNumber.textContent = this._likes.length;
       
@@ -64,9 +71,10 @@ export default class Card {
             //this._like();
             this._handlerLikeClick(this);
         });
-        this._buttonDeleteElement.addEventListener('click', (e) => {
-          e.prevenDefault();
+        this._buttonDeleteElement.addEventListener('click', () => {
+          console.log(123)
             this._handlerCardDelete(this);
+            
 
         });
         this._linkElement.addEventListener('click', () => {

@@ -24,4 +24,5 @@ export default class UserInfo{
             about: this._about,
         }
     }
+   
 }

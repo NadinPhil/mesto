@@ -25,11 +25,7 @@ export default class Card {
         // вернём DOM-элемент карточки
           return cardElement;
       } 
-      _getView() {
-        if( this._currentUserId === this._itemOwnerId){
-          this._buttonDeleteElement.classList.add('.elements-grid__delete_active');
-        }
-      }
+
       generateCard() {
         // Запишем разметку в приватное поле _element. 
         // Так у других элементов появится доступ к ней.
@@ -46,10 +42,10 @@ export default class Card {
         this._nameElement.textContent = this._data.name;
 
         this._setEventListener();
-        this._getView();
         this._renewLikes();
         this._buttonLikeNumber.textContent = this._likes.length;
-      
+         this._getView();
+         console.log(this._buttonDeleteElement);
         // Вернём элемент наружу
         return this._element;
       } 
@@ -107,5 +103,9 @@ export default class Card {
         }
         return this._buttonLikeNumber.textContent = this._likes.length;
       }
-        
+      _getView() {
+        if( this._currentUserId === this._itemOwnerId){
+         this._buttonDeleteElement.classList.add('.elements-grid__delete_active');
+       }
+      }
 }

@@ -85,12 +85,9 @@ addCard(data){
 
 //редактирования профиля
 editUserInfo(data){
-    console.log(data)
-    fetch( `${this._url}/users/me`, {
+    return fetch( `${this._url}/users/me`, {
         method: 'PATCH',
-        headers: {
-            headers:  this._headers,
-        },
+        headers:  this._headers,
         body: JSON.stringify({
             name: data.name,
             about: data.about
@@ -122,11 +119,9 @@ removeCard(cardId){
 
 //изменение аватара 
 editUserAvatar(userAvatar){
-    fetch( `${this._url}/users/me/avatar`, {
+    return fetch( `${this._url}/users/me/avatar`, {
         method: 'PATCH',
-        headers: {
-            headers:  this._headers,
-        },
+        headers: this._headers,
         body: JSON.stringify({
             avatar: userAvatar.avatar
         })

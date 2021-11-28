@@ -15,7 +15,6 @@ const openPopupAvatarButton = document.querySelector('.profile__edit-container')
 const openPopupAddButton = document.querySelector('.profile__add');
 const nameInput = popupEditForm.querySelector('.form__input_text_title');
 const jobInput = popupEditForm.querySelector('.form__input_text_subtitle');
-const avatarInput = popupEditForm.querySelector('.form__input_text_link');
 const inputPictureName = document.querySelector('.form__input_text_name');  
 const inputPictureLink = document.querySelector('.form__input_text_link');
 const validateAddForm = new FormValidator(config, '.form_type_add');
@@ -25,7 +24,6 @@ const popupAdd = new PopupWithForm('.popup_type_add', handleCardFormSubmit);
 const popupAvatar = new PopupWithForm('.popup_type_avatar', handleFormSubmitAvatar);
 const popupImage = new PopupWithImage('.popup_type_image');
 const popupSubmit = new PopupWithSubmit('.popup_type_delete');
-popupSubmit.setEventListeners();
 const editAvatar = new UserInfoAvatar('.profile__avatar');
 const userInfo = new UserInfo (
     {nameProfile: '.profile__title', 
@@ -63,7 +61,8 @@ Promise.all([api.getAllCards(),api.getUserInfo()])
         userId = dataUser._id;
         userInfo.setUserInfo(dataUser);
         userInfo.updateUserInfo();
-        editAvatar.editUserAvatar(dataUser);
+        console.log(dataUser);
+        editAvatar.editUserAvatar(dataUser.avatar);
         cardList.renderItems(dataCards); 
     });
 
@@ -83,7 +82,7 @@ function handleCardFormSubmit() {
     }
     api.addCard(item)
     .then(data => cardList.addItem(createCard(data)))
-    .catch((err) => console.log(`Ошибка: ${err}`))   
+    .catch((err) => console.log(`Ошибка: ${err}`))  
     popupAdd.close()
 }
 
@@ -113,10 +112,13 @@ popupSubmit.setEventListeners();
 //изменение аватара
 function handleFormSubmitAvatar(data) {
     //debugger
+        popupAvatar.setLoadSubmit(true);
         api.editUserAvatar(data)
         .then((res) => {
             console.log(res) 
-        }), 
+        })
+        .catch((err) => console.log(`Ошибка: ${err}`)) 
+        .finally(() => popupAvatar.setLoadSubmit(false));
         editAvatar.editUserAvatar(data.avatar),
         popupAvatar.close()
     };
@@ -128,6 +130,7 @@ popupAvatar.setEventListeners();
 
 // карточка редактирования профиля 
 function handlerformElementEdit(data) {
+    popupEdit.setLoadSubmit(true);
     api.editUserInfo(data)
     .then( (dataUser) => {
         userInfo.setUserInfo(dataUser),
@@ -137,6 +140,7 @@ function handlerformElementEdit(data) {
     .catch(err => {
         console.log(err)
       }) 
+    .finally(() => popupEdit.setLoadSubmit(false));
 };
 popupEdit.setEventListeners();
 
@@ -161,9 +165,11 @@ function handlerLikeClick(card){
     if (card.isLiked()) {
         api.removeCardLike(card.id)
         .then(dataCard => card.setArrayLikes(dataCard.likes))
+        .catch((err) => console.log(`Ошибка: ${err}`)) 
     }
     else { 
         api.setCardLike(card.id)
         .then(dataCard => card.setArrayLikes(dataCard.likes))
+        .catch((err) => console.log(`Ошибка: ${err}`)) 
     }  
 }

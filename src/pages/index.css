@@ -21,11 +21,11 @@
 @import url(../blocks/elements-grid/__like/elements-grid__like.css);
 @import url(../blocks/elements-grid/__like/_active/elements-grid__like_active.css);
 @import url(../blocks/elements-grid/__delete/elements-grid__delete.css);
+@import url(../blocks/elements-grid/__delete/_active/elements-grid__delete_active.css);
 @import url(../blocks/elements-grid/__text/elements-grid__text.css);
 @import url(../blocks/elements-grid/__img-container/elements-grid__img-container.css);
 @import url(../blocks/elements-grid/__like-container/elements-grid__like-container.css);
 @import url(../blocks/elements-grid/__like-number/elements-grid__like-number.css);
-@import url(../blocks/elements-grid/__delete/_active/elements-grid__delete_active.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/popup.css);

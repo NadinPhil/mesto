@@ -44,8 +44,8 @@ export default class Card {
         this._setEventListener();
         this._renewLikes();
         this._buttonLikeNumber.textContent = this._likes.length;
-         this._getView();
-         console.log(this._buttonDeleteElement);
+        this._getView();
+        console.log(this._buttonDeleteElement);
         // Вернём элемент наружу
         return this._element;
       } 
@@ -105,7 +105,7 @@ export default class Card {
       }
       _getView() {
         if( this._currentUserId === this._itemOwnerId){
-         this._buttonDeleteElement.classList.add('.elements-grid__delete_active');
+         this._buttonDeleteElement.classList.add('elements-grid__delete_active');
        }
       }
 }

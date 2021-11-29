@@ -1,9 +1,9 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithSubmit extends Popup{
-    constructor(popupSelector){
-        super(popupSelector);
-        this._form = this._popupSelector.querySelector('.form');
+    constructor(popup){
+        super(popup);
+        this._form = this._popup.querySelector('.form');
     }
     //добавляем обработчик клика и самбита
     setEventListeners(){

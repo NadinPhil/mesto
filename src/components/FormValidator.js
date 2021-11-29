@@ -4,7 +4,7 @@ export const config = {
     submitButtonSelector: ".form__button",
     inactiveButtonClass: "form__button_invalid",
     inputErrorClass: "form__input_invalid",
-    errorClass: "error",
+    errorClass: "error" ,
   };
   
   export class FormValidator {
@@ -26,7 +26,7 @@ export const config = {
     // спрятать ошибку
     _hideError(errorElement, inputElement) {
       (errorElement.textContent = ""),
-        inputElement.classList.remove(this._config.inputErrorClass);
+      inputElement.classList.remove(this._config.inputErrorClass);
     }
   
     // проверка инпутов на валидность
@@ -44,18 +44,17 @@ export const config = {
     }
     // блокировка кнопки
     disabledButton() {
-      this._button.classList.add(this._config.inactiveButtonClass),
-        (this._button.disabled = "disabled");
+      this._button.classList.add(this._config.inactiveButtonClass)
+      this._button.disabled = "disabled"
     }
   
     // реализация кнопки
     toggleButton(isActive) {
       if (isActive) {
-        this._button.classList.remove(this._config.inactiveButtonClass),
-          (this._button.disabled = false);
+        this._button.classList.remove(this._config.inactiveButtonClass)
+        this._button.disabled = false
       } else {
-        this._button.classList.add(this._config.inactiveButtonClass),
-          (this._button.disabled = "disabled");
+        this.disabledButton()
       }
     }
   
@@ -63,8 +62,8 @@ export const config = {
     _setEventListers = () => {
       Array.from(this._inputList).forEach((inputElement) => {
         inputElement.addEventListener("input", () => {
-          const isFormValid = this._element.checkValidity();
-          this._checkInput(inputElement), this.toggleButton(isFormValid);
+          const isFormValid = this._element.checkValidity()
+          this._checkInput(inputElement), this.toggleButton(isFormValid)
         });
       });
   

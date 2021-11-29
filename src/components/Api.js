@@ -4,19 +4,20 @@ constructor({url, headers}){
     this._headers = headers;
 }
 
+_checkResponse(res) {
+    if (res.ok) {
+        return res.json();
+    }
+  return Promise.reject('Сервер не доступен')
+}
+
 //получение списка карточек в виде массива
 getAllCards(){
 return fetch ( `${this._url}/cards`, {
     method: "GET",
     headers:  this._headers,
 })
-.then (res => {
-    if (res.ok) {
-        return res.json();
-    }
-  return Promise.reject('Сервер не доступен')
-  }) 
- 
+.then(this._checkResponse)
 }
 
 //получение данных пользователя
@@ -25,13 +26,7 @@ getUserInfo(){
         method: "GET",
         headers:  this._headers,
     })
-    .then (res => {
-        if (res.ok) {
-            return res.json();
-        }
-      return Promise.reject('Сервер не доступен')
-      }) 
-     
+    .then(this._checkResponse)
     }
 
 //лайк карточки
@@ -40,12 +35,7 @@ setCardLike(cardId){
         method: "PUT",
         headers:  this._headers,
     })
-    .then (res => {
-        if (res.ok) {
-            return res.json();
-        }
-      return Promise.reject('Сервер не доступен')
-      }) 
+    .then(this._checkResponse)
      
     }
 
@@ -55,12 +45,7 @@ removeCardLike(cardId){
         method: "DELETE",
         headers:  this._headers,
     })
-    .then (res => {
-        if (res.ok) {
-            return res.json();
-        }
-      return Promise.reject('Сервер не доступен')
-      }) 
+    .then(this._checkResponse)
      
     }
     
@@ -74,12 +59,7 @@ addCard(data){
             link: data.link
         }),
     })
-    .then (res => {
-        if (res.ok) {
-            return res.json();
-        }
-      return Promise.reject('Произошла ошибка при создании карточки')
-      }) 
+    .then(this._checkResponse)
      
     }
 
@@ -93,12 +73,7 @@ editUserInfo(data){
             about: data.about
         })
       })
-      .then (res => {
-        if (res.ok) {
-            return res.json();
-        }
-      return Promise.reject('Произошла ошибка при редактировании профиля')
-      }) 
+      .then(this._checkResponse)
      
     }
 
@@ -108,13 +83,7 @@ removeCard(cardId){
         method: "DELETE",
         headers:  this._headers,
     })
-    .then (res => {
-        if (res.ok) {
-            return res.json();
-        }
-      return Promise.reject('Сервер не доступен')
-      }) 
-     
+    .then(this._checkResponse)
     }
 
 //изменение аватара 
@@ -126,12 +95,7 @@ editUserAvatar(userAvatar){
             avatar: userAvatar.avatar
         })
       })
-      .then (res => {
-        if (res.ok) {
-            return res.json();
-        }
-      return Promise.reject('Произошла ошибка при редактировании профиля')
-      }) 
+      .then(this._checkResponse)
     }
 
 }

@@ -80,13 +80,14 @@ Promise.all([api.getAllCards(),api.getUserInfo()])
 
 // добавление карточки 
 function handleCardFormSubmit(item) {
+    popupAdd.setLoadSubmitAdd(true)
     api.addCard(item)
     .then(data => {
         cardList.addItem(createCard(data))
         popupAdd.close()
         })
-    .catch((err) => console.log(`Ошибка: ${err}`))  
-    
+    .catch((err) => console.log(`Ошибка: ${err}`))
+    .finally(() => popupAdd.setLoadSubmitAdd(false));   
 }
 
 // открытие попапа карточки

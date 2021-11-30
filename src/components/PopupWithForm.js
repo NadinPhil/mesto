@@ -31,17 +31,11 @@ export default class PopupWithForm extends Popup{
         this._form.reset();
     }
 
-    setLoadSubmit(isLoading){
+    setLoadSubmit(isLoading, buttonText){
         if (isLoading === true) {
             this._buttonSubmit.textContent = 'Сохранение...'
         }
-        else this._buttonSubmit.textContent = 'Сохранить'
+        else this._buttonSubmit.textContent = buttonText
     }
 
-    setLoadSubmitAdd(isLoading){
-        if (isLoading === true) {
-            this._buttonSubmit.textContent = 'Создание...'
-        }
-        else this._buttonSubmit.textContent = 'Создать'
-    }
 }

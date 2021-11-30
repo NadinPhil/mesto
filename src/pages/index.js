@@ -80,14 +80,14 @@ Promise.all([api.getAllCards(),api.getUserInfo()])
 
 // добавление карточки 
 function handleCardFormSubmit(item) {
-    popupAdd.setLoadSubmitAdd(true)
+    popupAdd.setLoadSubmit(true, 'Создать')
     api.addCard(item)
     .then(data => {
         cardList.addItem(createCard(data))
         popupAdd.close()
         })
     .catch((err) => console.log(`Ошибка: ${err}`))
-    .finally(() => popupAdd.setLoadSubmitAdd(false));   
+    .finally(() => popupAdd.setLoadSubmit(false, 'Создать'));   
 }
 
 // открытие попапа карточки
@@ -116,7 +116,7 @@ popupSubmit.setEventListeners();
 //изменение аватара
 function handleFormSubmitAvatar(data) {
     //debugger
-        popupAvatar.setLoadSubmit(true);
+        popupAvatar.setLoadSubmit(true, 'Сохранить');
         api.editUserAvatar(data)
         .then((res) => {
             console.log(res)
@@ -124,7 +124,7 @@ function handleFormSubmitAvatar(data) {
             popupAvatar.close()
         })
         .catch((err) => console.log(`Ошибка: ${err}`)) 
-        .finally(() => popupAvatar.setLoadSubmit(false)); 
+        .finally(() => popupAvatar.setLoadSubmit(false, 'Сохранить')); 
     };
 
 openPopupAvatarButton.addEventListener('click', () => {
@@ -136,7 +136,7 @@ popupAvatar.setEventListeners();
 
 // карточка редактирования профиля 
 function handlerformElementEdit(data) {
-    popupEdit.setLoadSubmit(true);
+    popupEdit.setLoadSubmit(true, 'Сохранить');
     api.editUserInfo(data)
     .then( (dataUser) => {
         userInfo.setUserInfo(dataUser),
@@ -146,7 +146,7 @@ function handlerformElementEdit(data) {
     .catch(err => {
         console.log(err)
       }) 
-    .finally(() => popupEdit.setLoadSubmit(false));
+    .finally(() => popupEdit.setLoadSubmit(false, 'Сохранить'));
 };
 popupEdit.setEventListeners();
 
